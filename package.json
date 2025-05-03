@@ -1,11 +1,14 @@
 {
   "name": "developer-portfolio",
-  "description": "Portfolio of Abu Said",
+  "description": "Portfolio of Siddheshvari Motivaras",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/siddheshvarimotivaras39/Resume",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out",
     "start": "next start",
     "lint": "next lint"
   },
@@ -26,6 +29,7 @@
     "autoprefixer": "latest",
     "eslint": "latest",
     "eslint-config-next": "15.1.1",
+    "gh-pages": "^6.3.0",
     "postcss": "latest",
     "sass": "^1.69.5",
     "tailwindcss": "latest"

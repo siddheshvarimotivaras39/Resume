@@ -3,7 +3,7 @@ export const personalData = {
   profile: '/profile.jpeg',
   designation: "Software Developer",
   description: "Full-stack Developer with expertise in React.js, Node.js, and modern JavaScript frameworks. Focused on delivering high-quality, responsive web applications on deadline",
-  email: 'motivarassiddheshvari@gmail.com',
+  email: 'mailto:motivarassiddheshvari@gmail.com',
   phone: '+917016239372',
   address: 'Porbandar, Gujarat, India',
   github: 'https://github.com/siddheshvarimotivaras39',
