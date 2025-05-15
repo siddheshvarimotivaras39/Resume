@@ -1,4 +1,3 @@
-import { personalData } from "@/utils/data/personal-data";
 import AboutSection from "./components/homepage/about";
 import Blog from "./components/homepage/blog";
 import Education from "./components/homepage/education";
@@ -10,7 +9,7 @@ import Skills from "./components/homepage/skills";
 async function getData() {
   try {
     // Fetch Medium RSS feed for @siddheshvari
-    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@siddheshvari`, { 
+    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@siddheshvari`, {
       next: { revalidate: 3600 } // Revalidate every hour
     });
 
@@ -19,13 +18,13 @@ async function getData() {
     }
 
     const data = await res.json();
-    
+
     // Transform Medium feed items to match your blog card component's expected format
     if (data.status === 'ok' && data.items && data.items.length > 0) {
       const mediumPosts = data.items.map(item => {
         // Extract first image from content if thumbnail is missing
         let coverImage = item.thumbnail;
-        
+
         if (!coverImage || coverImage === '') {
           // Try to extract image from content
           const imgRegex = /<img[^>]+src="([^">]+)"/g;
@@ -37,13 +36,13 @@ async function getData() {
             coverImage = '/png/placeholder.png';
           }
         }
-        
+
         // Clean description (remove HTML tags)
         const cleanDescription = item.description
           .replace(/<[^>]*>?/gm, '')
           .replace(/&nbsp;/g, ' ')
           .substring(0, 150) + '...';
-          
+
         return {
           title: item.title,
           description: cleanDescription,
@@ -55,11 +54,11 @@ async function getData() {
           comments_count: 0 // Medium doesn't provide this in the feed
         };
       });
-      
+
       // Sort randomly like the original code did
       return mediumPosts.sort(() => Math.random() - 0.5);
     }
-    
+
     return [];
   } catch (error) {
     console.error('Error fetching Medium posts:', error);
@@ -79,7 +78,6 @@ export default async function Home() {
       <Projects />
       <Education />
       <Blog blogs={blogs} />
-      {/* <ContactSection /> */}
     </div>
   )
 };

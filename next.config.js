@@ -4,7 +4,7 @@ const isProd = process.env.NODE_ENV === "production";
 module.exports = {
   reactStrictMode: true,
   images: {
-    unoptimized: true, // Disable default image optimization
+    unoptimized: true,
   },
   assetPrefix: isProd ? "/Resume/" : "",
   basePath: isProd ? "/Resume" : "",
